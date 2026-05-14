@@ -49,6 +49,24 @@ message SubmitLeaderWindowInfoRequest {
 
 message SubmitLeaderWindowInfoResponse {}
 
+// Scheduling strategy the block engine runs for this validator session.
+enum SchedulingStrategy {
+  SCHEDULING_STRATEGY_UNSPECIFIED = 0;
+  // First-in, first-out: continuous arrival-order sequencing.
+  SCHEDULING_STRATEGY_FIFO = 1;
+  // Frequent batch auction: discrete batches ordered by priority fees and tips.
+  SCHEDULING_STRATEGY_FBA = 2;
+  // Maximum revenue strategy: continuous streaming with revenue-prioritizing selection.
+  SCHEDULING_STRATEGY_MREV = 3;
+}
+
+// Selects the scheduling strategy for this validator session.
+message SetStrategyRequest {
+  SchedulingStrategy strategy = 1;
+}
+
+message SetStrategyResponse {}
+
 // Request for available block engine endpoints.
 message GetBlockEngineEndpointRequest {}
 
@@ -91,4 +109,7 @@ service BlockEngineValidator {
 
   // Discover available block engine endpoints for optimal region selection.
   rpc GetBlockEngineEndpoints (GetBlockEngineEndpointRequest) returns (GetBlockEngineEndpointResponse) {}
+
+  // Set the scheduling strategy for this validator session.
+  rpc SetStrategy (SetStrategyRequest) returns (SetStrategyResponse) {}
 }
