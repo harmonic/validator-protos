@@ -22,6 +22,12 @@ message SubscribePacketsResponse {
 // Request to subscribe to the block engine's bundle stream.
 message SubscribeBundlesRequest {}
 
+// Request to subscribe to the block engine's block stream.
+message SubscribeBlocksRequest {
+  string version = 1;
+  string commit_hash = 2;
+}
+
 // One or more bundles forwarded by the block engine.
 message SubscribeBundlesResponse {
   // Bundles with their server-assigned UUIDs.
@@ -99,7 +105,7 @@ service BlockEngineValidator {
   rpc SubscribeBundles2 (SubscribeBundlesRequest) returns (stream SubscribeBundlesResponse) {}
 
   // Subscribe to blocks (internally calls SubscribeBundles).
-  rpc SubscribeBlocks (SubscribeBundlesRequest) returns (stream SubscribeBundlesResponse) {}
+  rpc SubscribeBlocks (SubscribeBlocksRequest) returns (stream SubscribeBundlesResponse) {}
 
   // Returns the block builder's tip pubkey and commission.
   rpc GetBlockBuilderFeeInfo (BlockBuilderFeeInfoRequest) returns (BlockBuilderFeeInfoResponse) {}
