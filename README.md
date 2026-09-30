@@ -7,7 +7,8 @@ Protobuf definitions for the Harmonic validator client.
 Sources live in [`protos/`](protos/):
 
 - `auth.proto`: Authentication service for obtaining access tokens for the block engine and relayer
-- `block_engine.proto`: Block engine interface for streaming packets and bundles, reporting leader slots, and endpoint discovery
+- `block.proto`: Block stream types with explicit bundle boundaries
+- `block_engine.proto`: Block engine interface for streaming packets, bundles and blocks, reporting leader slots, and endpoint discovery
 - `bundle.proto`: Bundle types
 - `packet.proto`: Transaction packet and metadata types
 - `relayer.proto`: Relayer TPU proxy interface — socket config and packet streaming
