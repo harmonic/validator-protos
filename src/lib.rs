@@ -15,6 +15,10 @@ pub mod packet {
     tonic::include_proto!("packet");
 }
 
+pub mod block {
+    tonic::include_proto!("block");
+}
+
 pub mod bundle {
     tonic::include_proto!("bundle");
 }

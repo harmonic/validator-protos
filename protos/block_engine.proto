@@ -4,6 +4,7 @@ syntax = "proto3";
 import "packet.proto";
 import "shared.proto";
 import "bundle.proto";
+import "block.proto";
 import "google/protobuf/timestamp.proto";
 
 package block_engine;
@@ -104,8 +105,11 @@ service BlockEngineValidator {
   // Subscribe to bundles (v2).
   rpc SubscribeBundles2 (SubscribeBundlesRequest) returns (stream SubscribeBundlesResponse) {}
 
-  // Subscribe to blocks (internally calls SubscribeBundles).
+  // Deprecated: use SubscribeBlocks2.
   rpc SubscribeBlocks (SubscribeBlocksRequest) returns (stream SubscribeBundlesResponse) {}
+
+  // Subscribe to blocks with explicit bundle boundaries.
+  rpc SubscribeBlocks2 (SubscribeBlocksRequest) returns (stream block.Block) {}
 
   // Returns the block builder's tip pubkey and commission.
   rpc GetBlockBuilderFeeInfo (BlockBuilderFeeInfoRequest) returns (BlockBuilderFeeInfoResponse) {}
