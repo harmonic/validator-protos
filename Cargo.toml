@@ -1,6 +1,6 @@
 [package]
 name = "validator-protos"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2024"
 description = "Rust bindings for the Harmonic validator proto definitions"
 license = "Apache-2.0"
