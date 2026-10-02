@@ -48,10 +48,12 @@ message BlockBuilderFeeInfoResponse {
 
 // Notifies the block engine of the validator's upcoming leader slot.
 message SubmitLeaderWindowInfoRequest {
-  // When the leader slot begins.
+  // When the leader request is sent.
   google.protobuf.Timestamp start_timestamp = 1;
   // The leader slot number.
   uint64 slot = 2;
+  // When the leader slot ends.
+  google.protobuf.Timestamp end_timestamp = 3;
 }
 
 message SubmitLeaderWindowInfoResponse {}
